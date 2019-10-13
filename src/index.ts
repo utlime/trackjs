@@ -1,4 +1,4 @@
-class CircularLiFoQueue<T> {
+class LimitedLiFoQueue<T> {
   readonly size: number;
 
   private storage: Array<T> = [];
@@ -22,7 +22,7 @@ type TrackJSInstallOptions = { capture?: boolean, size?: number };
 export class TrackJS {
   private static capture = true;
 
-  private static queue?: CircularLiFoQueue<string>;
+  private static queue?: LimitedLiFoQueue<string>;
 
   static install({ capture = true, size = 10 } : TrackJSInstallOptions) {
     TrackJS.capture = capture;
@@ -30,7 +30,7 @@ export class TrackJS {
     if (capture) {
       TrackJS.sendUsage();
     } else {
-      TrackJS.queue = new CircularLiFoQueue<string>(size)
+      TrackJS.queue = new LimitedLiFoQueue<string>(size)
     }
   }
 

@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-class CircularLiFoQueue {
+class LimitedLiFoQueue {
     constructor(size) {
         this.storage = [];
         this.size = size;
@@ -20,7 +20,7 @@ class TrackJS {
             TrackJS.sendUsage();
         }
         else {
-            TrackJS.queue = new CircularLiFoQueue(size);
+            TrackJS.queue = new LimitedLiFoQueue(size);
         }
     }
     static sendError(error) {
